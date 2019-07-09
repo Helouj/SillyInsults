@@ -26,29 +26,31 @@ namespace SillyInsultsMVCWeb.Controllers
             var NounSvc = new NounService();
             var TitleSvc = new TitleService();
 
-            int randAdjIndex;
-            int randNounIndex;
-            int randTitleIndex;
-
-            IEnumerable<AdjectiveDetail> AdjList = AdjectiveSvc.GetAdjectives();
-            IEnumerable<NounDetail> NounList = NounSvc.GetNouns();
-            IEnumerable<TitleDetail> TitleList = TitleSvc.GetTitles();
+            string adjname = AdjectiveSvc.GetRandomAdjective();
+            string nounname = NounSvc.GetRandomNoun();
+            string titlename = TitleSvc.GetRandomTitle();
+            //int randAdjIndex;
+            //int randNounIndex;
+            //int randTitleIndex;
+            //IEnumerable<AdjectiveDetail> AdjList = AdjectiveSvc.GetAdjectives();
+            //IEnumerable<NounDetail> NounList = NounSvc.GetNouns();
+            //IEnumerable<TitleDetail> TitleList = TitleSvc.GetTitles();
             
-            //generate 3 random parts, store it in a table, then display the insult
-            //int numberOfAdjectives = AdjectiveSvc.GetNumberOfEntries("Adjective");
-            randAdjIndex = (rand.Next() % AdjList.Count());
-            randNounIndex = (rand.Next() % NounList.Count());
-            randTitleIndex = (rand.Next() % TitleList.Count());
+            ////generate 3 random parts, store it in a table, then display the insult
+            ////int numberOfAdjectives = AdjectiveSvc.GetNumberOfEntries("Adjective");
+            //randAdjIndex = (rand.Next() % AdjList.Count());
+            //randNounIndex = (rand.Next() % NounList.Count());
+            //randTitleIndex = (rand.Next() % TitleList.Count());
 
-            var AdjObj = AdjList.ElementAt(randAdjIndex);
-            var NounObj = NounList.ElementAt(randNounIndex);
-            var TitleObj = TitleList.ElementAt(randTitleIndex);
+            //var AdjObj = AdjList.ElementAt(randAdjIndex);
+            //var NounObj = NounList.ElementAt(randNounIndex);
+            //var TitleObj = TitleList.ElementAt(randTitleIndex);
             
 
             SillyInsultHistory insult = new SillyInsultHistory();
-            insult.AdjectiveWord = AdjObj.AdjectiveWord;
-            insult.NounWord = NounObj.NounWord;
-            insult.TitleWord = TitleObj.TitleWord;
+            insult.AdjectiveWord = adjname;
+            insult.NounWord = nounname;
+            insult.TitleWord = titlename;
 
 
             return View(insult);

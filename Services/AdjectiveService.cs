@@ -43,7 +43,28 @@ namespace Services
                 return query.ToArray();
             }
         }
+        public string GetRandomAdjective()
+        {
 
+            //string PartOfSpeech = "SillyInsult";
+
+            string sqlquery = $"SELECT TOP 1 AdjectiveWord FROM Adjective ORDER BY NEWID();  ";
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = sqlquery;
+            cmd.Connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True");
+            cmd.Connection.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+            //Adjective adj = (Adjective)cmd.ExecuteScalar();
+            rdr.Read();
+            string adjname = (string)rdr["AdjectiveWord"];
+            rdr.Close();
+
+            //int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            //return count;
+            return adjname;
+
+        }
         public AdjectiveEdit GetAdjectiveByID(int id)
         {
             using (var ctx = new ApplicationDbContext())
