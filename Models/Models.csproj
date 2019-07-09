@@ -49,6 +49,10 @@
     <Compile Include="NounDetail.cs" />
     <Compile Include="NounEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SillyInsultCR.cs" />
+    <Compile Include="TitleCreate.cs" />
+    <Compile Include="TitleDetail.cs" />
+    <Compile Include="TitleEdit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

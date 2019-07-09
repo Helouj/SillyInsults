@@ -11,80 +11,80 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class NounService
+    public class TitleService
     {
 
-        public bool CreateNoun(NounCreate model)
+        public bool CreateTitle(TitleCreate model)
         {
-            var entity = new Noun()
+            var entity = new Title()
             {
-                NounID = model.NounID,
-                NounWord = model.NounWord
+                TitleID = model.TitleID,
+                TitleWord = model.TitleWord
             };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Nouns.Add(entity);
+                ctx.Titles.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<NounDetail> GetNouns()
+        public IEnumerable<TitleDetail> GetTitles()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                IQueryable<NounDetail> query = ctx
-                    .Nouns
+                IQueryable<TitleDetail> query = ctx
+                    .Titles
                    // .Where(e=>e.OwnerId == _userID)
-                   .Select(e => new NounDetail
+                   .Select(e => new TitleDetail
                    {
-                       NounID = e.NounID,
-                       NounWord = e.NounWord
+                       TitleID = e.TitleID,
+                       TitleWord = e.TitleWord
                    });
                 return query.ToArray();
             }
         }
 
-        public NounEdit GetNounByID(int id)
+        public TitleEdit GetTitleByID(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx
-                    .Nouns
-                    .Single(e => e.NounID == id);
-                return new NounEdit
+                 var entity = ctx
+                    .Titles
+                    .Single(e => e.TitleID == id);
+                return new TitleEdit
                 {
-                    NounID = entity.NounID,
-                    NounWord = entity.NounWord
+                    TitleID = entity.TitleID,
+                    TitleWord = entity.TitleWord
                 };
             }
         }
-        public bool UpdateNoun(NounEdit model)
+        public bool UpdateTitle(TitleEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
 
                 var entity = ctx
-                    .Nouns
-                    .Single(e => e.NounID == model.NounID);
+                    .Titles
+                    .Single(e => e.TitleID == model.TitleID);
 
-                entity.NounWord = model.NounWord;
+                entity.TitleWord = model.TitleWord;
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public bool DeleteNoun(int nounID)
+        public bool DeleteTitle(int titleID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx
-                    .Nouns
-                    .Single(e => e.NounID == nounID);
+                    .Titles
+                    .Single(e => e.TitleID == titleID);
 
-                ctx.Nouns.Remove(entity);
+                ctx.Titles.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-       
+        
 
     }
 }

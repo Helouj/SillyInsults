@@ -34,6 +34,9 @@ namespace SillyInsultsMVCWeb.Models
         }
         public DbSet<Noun> Nouns { get; set; }
         public DbSet<Adjective> Adjectives { get; set; }
+        public DbSet<Title> Titles { get; set; }
+
+        public DbSet<SillyInsultHistory> SillyInsults { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -46,7 +49,9 @@ namespace SillyInsultsMVCWeb.Models
                 .Add(new IdentityUserRoleConfiguration());
         }
 
-       // public System.Data.Entity.DbSet<Models.NounEdit> NounEdits { get; set; }
+        //public System.Data.Entity.DbSet<Data.SillyInsultCR> SillyInsultCRs { get; set; }
+
+        // public System.Data.Entity.DbSet<Models.NounEdit> NounEdits { get; set; }
 
         //public System.Data.Entity.DbSet<Models.NounEdit> NounEdits { get; set; }
 

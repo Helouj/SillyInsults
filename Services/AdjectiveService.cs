@@ -84,35 +84,8 @@ namespace Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public int GetNumberOfEntries(object t)
-        {
-            //get number of entries in a table, get a random one
-            string PartOfSpeech = "Adjective";
-
-            //using (var ctx = new ApplicationDbContext())
-
-            //{
-
-            string sqlquery = $"Select Count(*) from {PartOfSpeech};";
-            //DbSqlQuery<Adjective> queryresults = ctx.Adjectives.SqlQuery($"Select Count({PartOfSpeech}ID) itemcount from {PartOfSpeech};");
-            //SqlConnection conn = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = sqlquery;
-            cmd.Connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True");
-            cmd.Connection.Open();
-            //cmd.Connection = @"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True";
-            int count = (int)cmd.ExecuteScalar();
-            cmd.Connection.Close();
-            return count;
-
-
-
-            // return queryresults.Single();
-
-            //}
-
-
-        }
+       
+        
 
     }
 }

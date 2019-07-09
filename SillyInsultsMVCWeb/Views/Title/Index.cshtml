@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.NounDetail>
+﻿@model IEnumerable<Models.TitleDetail>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NounWord)
+            @Html.DisplayNameFor(model => model.TitleWord)
         </th>
         <th></th>
     </tr>
@@ -20,11 +20,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NounWord)
+            @Html.DisplayFor(modelItem => item.TitleWord)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.NounID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.NounID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.TitleID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.TitleID })
         </td>
     </tr>
 }

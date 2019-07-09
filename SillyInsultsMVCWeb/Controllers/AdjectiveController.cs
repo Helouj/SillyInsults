@@ -20,10 +20,7 @@ namespace SillyInsultsMVCWeb.Controllers
         }
 
         // GET: Adjective/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+       
         public ActionResult Create()
         {
 

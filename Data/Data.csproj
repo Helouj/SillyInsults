@@ -63,10 +63,20 @@
     <Compile Include="Migrations\201907081825554_AddedAdjectives.Designer.cs">
       <DependentUpon>201907081825554_AddedAdjectives.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907091400228_Added-Title-Table.cs" />
+    <Compile Include="Migrations\201907091400228_Added-Title-Table.Designer.cs">
+      <DependentUpon>201907091400228_Added-Title-Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907091552014_Added-SillyInsultsHistory-table.cs" />
+    <Compile Include="Migrations\201907091552014_Added-SillyInsultsHistory-table.Designer.cs">
+      <DependentUpon>201907091552014_Added-SillyInsultsHistory-table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Noun.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SillyInsultHistory.cs" />
+    <Compile Include="Title.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -78,6 +88,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907081825554_AddedAdjectives.resx">
       <DependentUpon>201907081825554_AddedAdjectives.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907091400228_Added-Title-Table.resx">
+      <DependentUpon>201907091400228_Added-Title-Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907091552014_Added-SillyInsultsHistory-table.resx">
+      <DependentUpon>201907091552014_Added-SillyInsultsHistory-table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

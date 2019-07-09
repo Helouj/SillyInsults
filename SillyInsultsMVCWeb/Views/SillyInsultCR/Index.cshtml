@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Data.SillyInsultCR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AdjectiveWord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NounWord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleWord)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdjectiveWord)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NounWord)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleWord)
+        </td>
+        <td>
+            
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.SillyInsultHistoryID })
+        </td>
+    </tr>
+}
+
+</table>

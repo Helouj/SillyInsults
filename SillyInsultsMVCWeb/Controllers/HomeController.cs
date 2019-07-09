@@ -1,4 +1,5 @@
 ﻿using Data;
+using Models;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -19,37 +20,45 @@ namespace SillyInsultsMVCWeb.Controllers
         [ActionName("Index")]
         public ActionResult IndexGenerate()
         {
+            //most of the code here I wrote so that this function could be called for all 3 tables, instead of a function in each table
             Random rand = new Random(DateTime.Now.Millisecond);
-            //var AdjectiveSVC = new AdjectiveService();
+            var AdjectiveSvc = new AdjectiveService();
             var NounSvc = new NounService();
+            var TitleSvc = new TitleService();
 
-            // var TitleSvc = new TitleService(); 
-            string[] arr = { "Noun", "Adjective", "Title" };
-            int[] arr1 = new int[3];
-            //i < 3
-            for (int i = 0; i < 1; i++)
-            {
-                arr1[i] = NounSvc.GetNumberOfEntries(arr[i]);
-                int randnumber = rand.Next() % arr1[i] + 1;
+            int randAdjIndex;
+            int randNounIndex;
+            int randTitleIndex;
 
-                if (i == 0)
-                {
-                    var service = new NounService();
-                    var modelInDB = service.GetNounByID(randnumber);
+            IEnumerable<AdjectiveDetail> AdjList = AdjectiveSvc.GetAdjectives();
+            IEnumerable<NounDetail> NounList = NounSvc.GetNouns();
+            IEnumerable<TitleDetail> TitleList = TitleSvc.GetTitles();
+            
+            //generate 3 random parts, store it in a table, then display the insult
+            //int numberOfAdjectives = AdjectiveSvc.GetNumberOfEntries("Adjective");
+            randAdjIndex = (rand.Next() % AdjList.Count());
+            randNounIndex = (rand.Next() % NounList.Count());
+            randTitleIndex = (rand.Next() % TitleList.Count());
 
-                    var model = new Noun
-                    {
-                        NounID = modelInDB.NounID,
-                        NounWord = modelInDB.NounWord
-                    };
-                    return View(model);
-                }
-            }
-            //determine which function to call based on what it's given
-            return View();
-            //already have number of entries in each table for this.  Based on that, I need to generate a random number, do modulo(number of entries), then get that entry from the table, and display it on the screen
+            var AdjObj = AdjList.ElementAt(randAdjIndex);
+            var NounObj = NounList.ElementAt(randNounIndex);
+            var TitleObj = TitleList.ElementAt(randTitleIndex);
+            
+
+            SillyInsultHistory insult = new SillyInsultHistory();
+            insult.AdjectiveWord = AdjObj.AdjectiveWord;
+            insult.NounWord = NounObj.NounWord;
+            insult.TitleWord = TitleObj.TitleWord;
+
+
+            return View(insult);
 
         }
+        //determine which function to call based on what it's given
+
+        //already have number of entries in each table for this.  Based on that, I need to generate a random number, do modulo(number of entries), then get that entry from the table, and display it on the screen
+
+
 
         public ActionResult About()
         {

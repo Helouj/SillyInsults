@@ -1,4 +1,4 @@
-﻿@model Data.Noun
+﻿@model Data.SillyInsultHistory
 @{
     ViewBag.Title = "Home Page";
 }
@@ -23,12 +23,14 @@
 
             <div class="form-actions no-color">
 
-                <input type="submit" value="submit" class="btn btn-default" /> |
-                @Html.ActionLink("Generate a random insult", "Index", "Home")
+                <input type="submit" value="generate a random insult" class="btn btn-default" />
+                
 
             </div>
         }
+        @Html.DisplayFor(modelItem => modelItem.AdjectiveWord)
         @Html.DisplayFor(modelItem => modelItem.NounWord)
+        @Html.DisplayFor(modelItem => modelItem.TitleWord)
     </div>
     <div class="col-md-4">
 
