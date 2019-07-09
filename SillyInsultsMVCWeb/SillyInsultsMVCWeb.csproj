@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdjectiveController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NounController.cs" />
@@ -239,6 +240,10 @@
     <Content Include="Views\Noun\Index.cshtml" />
     <Content Include="Views\Noun\Edit.cshtml" />
     <Content Include="Views\Noun\Delete.cshtml" />
+    <Content Include="Views\Adjective\Create.cshtml" />
+    <Content Include="Views\Adjective\Delete.cshtml" />
+    <Content Include="Views\Adjective\Edit.cshtml" />
+    <Content Include="Views\Adjective\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

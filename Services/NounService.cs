@@ -3,6 +3,8 @@ using Models;
 using SillyInsultsMVCWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -87,13 +89,27 @@ namespace Services
             //get number of entries in a table, get a random one
             string PartOfSpeech = "Noun";
             
-            using (var ctx = new ApplicationDbContext())
+            //using (var ctx = new ApplicationDbContext())
 
-            {
-                var queryresults = ctx.Nouns.SqlQuery($"Select Count({PartOfSpeech}ID) from {PartOfSpeech};");
-                return queryresults.Single().NounID;
+            //{
+                
+                string sqlquery = $"Select Count(*) from {PartOfSpeech};";
+                //DbSqlQuery<Noun> queryresults = ctx.Nouns.SqlQuery($"Select Count({PartOfSpeech}ID) itemcount from {PartOfSpeech};");
+                //SqlConnection conn = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True");
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = sqlquery;
+                cmd.Connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True");
+                cmd.Connection.Open();
+                //cmd.Connection = @"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True";
+                int count = (int)cmd.ExecuteScalar();
+                cmd.Connection.Close();
+                return count;
+               
 
-            }
+            
+               // return queryresults.Single();
+
+            //}
             
 
         }

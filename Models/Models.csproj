@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdjectiveCreate.cs" />
+    <Compile Include="AdjectiveDetail.cs" />
+    <Compile Include="AdjectiveEdit.cs" />
     <Compile Include="NounCreate.cs" />
     <Compile Include="NounDetail.cs" />
     <Compile Include="NounEdit.cs" />

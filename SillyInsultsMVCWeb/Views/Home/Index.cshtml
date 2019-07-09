@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Data.Noun
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -21,10 +22,13 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Noun" class="btn btn-default" /> |
+
+                <input type="submit" value="submit" class="btn btn-default" /> |
                 @Html.ActionLink("Generate a random insult", "Index", "Home")
+
             </div>
         }
+        @Html.DisplayFor(modelItem => modelItem.NounWord)
     </div>
     <div class="col-md-4">
 

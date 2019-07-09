@@ -54,6 +54,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adjective.cs" />
+    <Compile Include="Migrations\201907031509317_InitialCreate.cs" />
+    <Compile Include="Migrations\201907031509317_InitialCreate.Designer.cs">
+      <DependentUpon>201907031509317_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907081825554_AddedAdjectives.cs" />
+    <Compile Include="Migrations\201907081825554_AddedAdjectives.Designer.cs">
+      <DependentUpon>201907081825554_AddedAdjectives.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Noun.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +71,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907031509317_InitialCreate.resx">
+      <DependentUpon>201907031509317_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907081825554_AddedAdjectives.resx">
+      <DependentUpon>201907081825554_AddedAdjectives.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

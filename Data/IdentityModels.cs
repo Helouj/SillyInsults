@@ -33,6 +33,7 @@ namespace SillyInsultsMVCWeb.Models
             return new ApplicationDbContext();
         }
         public DbSet<Noun> Nouns { get; set; }
+        public DbSet<Adjective> Adjectives { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
