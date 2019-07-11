@@ -67,6 +67,7 @@ namespace SillyInsultsMVCWeb.Controllers
             var model = svc.GetSillyInsultByID(id);
             return View(model);
         }
+        
 
         // POST: Title/Delete/5
         [HttpPost]

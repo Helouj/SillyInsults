@@ -49,6 +49,8 @@ namespace SillyInsultsMVCWeb.Models
                 .Add(new IdentityUserRoleConfiguration());
         }
 
+       // public System.Data.Entity.DbSet<Data.SillyInsultCR> SillyInsultCRs { get; set; }
+
         //public System.Data.Entity.DbSet<Data.SillyInsultCR> SillyInsultCRs { get; set; }
 
         // public System.Data.Entity.DbSet<Models.NounEdit> NounEdits { get; set; }

@@ -253,6 +253,7 @@
     <Content Include="Views\SillyInsultCR\Create.cshtml" />
     <Content Include="Views\SillyInsultCR\Delete.cshtml" />
     <Content Include="Views\SillyInsultCR\Index.cshtml" />
+    <Content Include="Views\Shared\ListInsults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -49,6 +49,47 @@ namespace Services
             }
         }
 
+       
+
+        public IEnumerable<SillyInsultCR> Get10RecentInsults()
+        {
+
+            //string PartOfSpeech = "SillyInsult";
+
+            string sqlquery = $"SELECT TOP 10 AdjectiveWord, NounWord, TitleWord FROM SillyInsultHistory ORDER BY SillyInsultHistoryID DESC;;  ";
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = sqlquery;
+            cmd.Connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True");
+            cmd.Connection.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+            //rdr.Read();
+            //Adjective adj = (Adjective)cmd.ExecuteScalar();
+            List<SillyInsultCR> hist = new List <SillyInsultCR>();
+           
+            while (rdr.Read())
+            {
+                string tempadj = (string)rdr["AdjectiveWord"];
+                string tempnoun = (string)rdr["NounWord"];
+                string temptitle = (string)rdr["TitleWord"];
+                SillyInsultCR tempinsult = new SillyInsultCR();
+
+                tempinsult.AdjectiveWord = tempadj;
+                tempinsult.NounWord = tempnoun;
+                tempinsult.TitleWord = temptitle;
+                hist.Add(tempinsult);
+                
+            };
+            
+           
+            rdr.Close();
+
+            //int count = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            //return count;
+            return hist;
+
+        }
+
         public SillyInsultCR GetSillyInsultByID(int id)
         {
             using (var ctx = new ApplicationDbContext())

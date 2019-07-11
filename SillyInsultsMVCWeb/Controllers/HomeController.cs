@@ -13,15 +13,20 @@ namespace SillyInsultsMVCWeb.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var svc = new SillyInsultService();
+            var model = svc.GetSillyInsults();
+
+            //ViewData["randominsult"] = insult;
+           // ViewBag.randominsults = insult;
+            return View(model);
         }
 
         [HttpPost]
         [ActionName("Index")]
         public ActionResult IndexGenerate()
         {
-            //most of the code here I wrote so that this function could be called for all 3 tables, instead of a function in each table
-            Random rand = new Random(DateTime.Now.Millisecond);
+            
+            
             var AdjectiveSvc = new AdjectiveService();
             var NounSvc = new NounService();
             var TitleSvc = new TitleService();
@@ -29,36 +34,35 @@ namespace SillyInsultsMVCWeb.Controllers
             string adjname = AdjectiveSvc.GetRandomAdjective();
             string nounname = NounSvc.GetRandomNoun();
             string titlename = TitleSvc.GetRandomTitle();
-            //int randAdjIndex;
-            //int randNounIndex;
-            //int randTitleIndex;
-            //IEnumerable<AdjectiveDetail> AdjList = AdjectiveSvc.GetAdjectives();
-            //IEnumerable<NounDetail> NounList = NounSvc.GetNouns();
-            //IEnumerable<TitleDetail> TitleList = TitleSvc.GetTitles();
-            
-            ////generate 3 random parts, store it in a table, then display the insult
-            ////int numberOfAdjectives = AdjectiveSvc.GetNumberOfEntries("Adjective");
-            //randAdjIndex = (rand.Next() % AdjList.Count());
-            //randNounIndex = (rand.Next() % NounList.Count());
-            //randTitleIndex = (rand.Next() % TitleList.Count());
 
-            //var AdjObj = AdjList.ElementAt(randAdjIndex);
-            //var NounObj = NounList.ElementAt(randNounIndex);
-            //var TitleObj = TitleList.ElementAt(randTitleIndex);
-            
-
-            SillyInsultHistory insult = new SillyInsultHistory();
+            SillyInsultCR insult = new SillyInsultCR();
             insult.AdjectiveWord = adjname;
             insult.NounWord = nounname;
             insult.TitleWord = titlename;
 
+            var svc = new SillyInsultService();
+            svc.CreateSillyInsult(insult);
+            var model = svc.Get10RecentInsults();
 
-            return View(insult);
+            //ViewData["randominsult"] = insult;
+            ViewBag.randomadj = insult.AdjectiveWord;
+            ViewBag.randomnoun = insult.NounWord;
+            ViewBag.randomtitle = insult.TitleWord;
+            //var service = new SillyInsultService();
+            return View(model);
+
+            //return View(insult);
 
         }
-        //determine which function to call based on what it's given
+        public ActionResult ListInsults()
+        {
+            SillyInsultService service = new SillyInsultService();
+            //IEnumerable<SillyInsultCR> model = service.GetSillyInsults();
+            //ViewBag.insultlist = service.GetSillyInsults();
+            return View(service.Get10RecentInsults());
+            //need to have model contain list of insults, and viewbag have the random insults
+        }
 
-        //already have number of entries in each table for this.  Based on that, I need to generate a random number, do modulo(number of entries), then get that entry from the table, and display it on the screen
 
 
 
