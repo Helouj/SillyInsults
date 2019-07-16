@@ -1,34 +1,39 @@
 ﻿@model IEnumerable <Data.SillyInsultCR>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AdjectiveWord)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NounWord)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TitleWord)
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdjectiveWord)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NounWord)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TitleWord)
-            </td>
+            <th>
+                
+                    
+
+                    @Html.DisplayNameFor(model => model.AdjectiveWord)
+        
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NounWord)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleWord)
+            </th>
         </tr>
-    }
-    
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdjectiveWord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NounWord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleWord)
+                </td>
+            </tr>
+        }
 
 
 
-</table>
+    </table>
+
+    <img src="~/Content/maroon.png">

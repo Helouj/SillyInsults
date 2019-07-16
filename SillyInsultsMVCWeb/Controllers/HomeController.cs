@@ -59,7 +59,7 @@ namespace SillyInsultsMVCWeb.Controllers
             SillyInsultService service = new SillyInsultService();
             //IEnumerable<SillyInsultCR> model = service.GetSillyInsults();
             //ViewBag.insultlist = service.GetSillyInsults();
-            return View(service.Get10RecentInsults());
+            return PartialView(service.Get10RecentInsults());
             //need to have model contain list of insults, and viewbag have the random insults
         }
 
