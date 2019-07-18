@@ -6,16 +6,23 @@
     background-repeat:no-repeat;
     background-position:center;
     background-attachment:fixed;
-    
+    font-family:'Acme';
     
     
 }
+.form-horizontal {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+footer{
+    background-color: rgba(0, 0, 0, 1);
+    color:white;
+}
 .jumbotron {
   
-    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(maroon.png);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(seriously.png);
     background-repeat: no-repeat;
-    text-shadow: 1px 1px black;
-    padding-right: 20px;
+   
+    padding: 0px 70px 0px 70px !important;
   
     position: center;
     
@@ -25,10 +32,19 @@
     margin: auto;
     background-size: cover;
 }
+#jumbocontent {
+    margin-right: 180px;
+    padding-bottom: 50px;
+   
+}
+.jumbotron.h1 {
+    background-color: rgba(255, 255, 255, 0.9);
+}
 
 table{
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(255, 255, 255, .9);
     margin-top: 10px;
+    border: 1px solid gray;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -36,6 +52,36 @@ table{
     padding-left: 15px;
     padding-right: 15px;
 }
+#randominsultsection{
+text-align:left;
+
+
+display:inline-block;
+   
+}
+
+#pretext {
+    display: inline !important;
+    background-color: rgba(255, 255, 255, .9);
+}
+#randominsult{
+   margin-left:10%;
+   border: dashed black 1px;
+   
+    display:inline!important;
+    padding: 1px 10px 1px 10px;
+    background-color:rgba(255, 255, 255, .95);
+}
+#moron{
+    min-width:20px;
+    max-width:80%;
+}
+.btn{
+    margin:5% 0px 15% 0px;
+    padding: 5px 40px 5px 40px;
+}
+
+
 /*table {
     width: 200px;
     height: 200px;

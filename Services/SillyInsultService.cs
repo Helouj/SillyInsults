@@ -59,7 +59,11 @@ namespace Services
             string sqlquery = $"SELECT TOP 10 AdjectiveWord, NounWord, TitleWord FROM SillyInsultHistory ORDER BY SillyInsultHistoryID DESC;;  ";
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = sqlquery;
-            cmd.Connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True");
+            ApplicationDbContext newdb = new ApplicationDbContext();
+            
+            cmd.Connection = new SqlConnection(newdb.Database.Connection.ConnectionString);
+            
+            //Server = tcp:sillyinsultgeneratordbserver.database.windows.net,1433; Initial Catalog = SillyInsultGenerator_db; Persist Security Info = False; User ID = { your_username }; Password ={ your_password}; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;
             cmd.Connection.Open();
             SqlDataReader rdr = cmd.ExecuteReader();
             //rdr.Read();

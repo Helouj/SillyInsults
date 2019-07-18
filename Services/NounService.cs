@@ -79,7 +79,9 @@ namespace Services
             string sqlquery = $"SELECT TOP 1 NounWord FROM Noun ORDER BY NEWID();  ";
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = sqlquery;
-            cmd.Connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-SillyInsultsMVCWeb-20190703094431.mdf;Initial Catalog=SillyInsults;Integrated Security=True");
+            ApplicationDbContext newdb = new ApplicationDbContext();
+
+            cmd.Connection = new SqlConnection(newdb.Database.Connection.ConnectionString);
             cmd.Connection.Open();
             SqlDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
