@@ -22,7 +22,7 @@ namespace SillyInsultsMVCWeb.Controllers
         }
 
         [HttpPost]
-        //[ActionName("Index")]
+        [ActionName("Index")]
         public ActionResult IndexGenerate()
         {
 
