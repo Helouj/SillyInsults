@@ -11,6 +11,7 @@ namespace Models
     {
         [Key]
         public int NounID { get; set; }
+        [Display(Name = "Noun")]
         public string NounWord { get; set; }
     }
 }

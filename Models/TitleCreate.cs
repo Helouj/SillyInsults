@@ -13,6 +13,7 @@ namespace Models
     {
         [Key]
         public int TitleID { get; set; }
+        [Display(Name = "Title")]
         public string TitleWord { get; set; }
     }
 }

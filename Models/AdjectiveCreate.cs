@@ -11,6 +11,7 @@ namespace Models
     {
         [Key]
         public int AdjectiveID { get; set; }
+        [Display(Name = "Adjective")]
         public string AdjectiveWord { get; set; }
     }
 }

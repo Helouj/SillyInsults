@@ -18,14 +18,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "Index", "Home")
+                @Html.ActionLink("Silly Insults", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    
                     <li>@Html.ActionLink("Create a new Adjective", "Create", "Adjective")</li>
                     <li>@Html.ActionLink("Create a new Noun", "Create", "Noun")</li>
                     <li>@Html.ActionLink("Create a new Title", "Create", "Title")</li>
                     <li>@Html.ActionLink("Create a new SillyInsult", "Create", "SillyInsultCR")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

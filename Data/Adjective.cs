@@ -12,6 +12,7 @@ namespace Data
         [Key]
         public int AdjectiveID { get; set; }
         [Required]
+        [Display(Name = "Adjective")]
         public string AdjectiveWord { get; set; }
 
 
