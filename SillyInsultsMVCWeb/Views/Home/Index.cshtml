@@ -1,47 +1,52 @@
 ﻿@model IEnumerable<Data.SillyInsultCR>
 @{
 
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
 
     //List<Data.SillyInsultCR> listofinsults = (List<Data.SillyInsultCR>)ViewData["insultlist"];
 }
 
 <div class="jumbotron">
-    
+
     <div id="jumbocontent">
         <h1>Silly Insults</h1>
-        <p class="lead">This is a website for generating silly insults.<br />  Think looney tunes' bugs bunny or something</p>
+        <p class="lead">This is a website for generating silly insults.  Think loony tunes' bugs bunny or something</p>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-
+                <div class="col-sm-offset-5">
                 <input type="submit" value="generate a random insult" class="btn btn-default" />
+                </div>
+                <div class="row">
+                <div class=" col-sm-8" id="randominsultsection">
 
-                @ViewBag.randomadj
-                @ViewBag.randomnoun
-                @ViewBag.randomtitle
-                @ViewBag.disp
-                <br />
+                    <h4 id="pretext" class="h4">
+                        You are a:
+                    </h4>
+                        <h2 id="randominsult" class="h2">
+                            @ViewBag.randomadj
+                            @ViewBag.randomnoun
+                            @ViewBag.randomtitle
+                        </h2>
+                        </div>
+                <div class=" col-sm-3">
+                    <img id="moron" src="~/Content/maroon.png" alt="bugs bunny saying you're a moron" />
+                    </div>
+                <div class=" col-sm-1">
+                </div>
+                </div>
+
             </div>
         }
+ 
 
-
-
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
 </div>
-@{Html.RenderAction("ListInsults", Model);}
+@{Html.RenderPartial("ListInsults", Model);}

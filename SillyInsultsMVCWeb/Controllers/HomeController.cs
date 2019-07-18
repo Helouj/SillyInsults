@@ -14,19 +14,19 @@ namespace SillyInsultsMVCWeb.Controllers
         public ActionResult Index()
         {
             var svc = new SillyInsultService();
-            var model = svc.GetSillyInsults();
+            IEnumerable<SillyInsultCR> model = svc.Get10RecentInsults();
 
             //ViewData["randominsult"] = insult;
-           // ViewBag.randominsults = insult;
+            // ViewBag.randominsults = insult;
             return View(model);
         }
 
         [HttpPost]
-        [ActionName("Index")]
+        //[ActionName("Index")]
         public ActionResult IndexGenerate()
         {
-            
-            
+
+
             var AdjectiveSvc = new AdjectiveService();
             var NounSvc = new NounService();
             var TitleSvc = new TitleService();
@@ -35,14 +35,16 @@ namespace SillyInsultsMVCWeb.Controllers
             string nounname = NounSvc.GetRandomNoun();
             string titlename = TitleSvc.GetRandomTitle();
 
-            SillyInsultCR insult = new SillyInsultCR();
-            insult.AdjectiveWord = adjname;
-            insult.NounWord = nounname;
-            insult.TitleWord = titlename;
+            SillyInsultCR insult = new SillyInsultCR
+            {
+                AdjectiveWord = adjname,
+                NounWord = nounname,
+                TitleWord = titlename
+            };
 
             var svc = new SillyInsultService();
             svc.CreateSillyInsult(insult);
-            var model = svc.Get10RecentInsults();
+            IEnumerable<SillyInsultCR> model = svc.Get10RecentInsults();
 
             //ViewData["randominsult"] = insult;
             ViewBag.randomadj = insult.AdjectiveWord;
@@ -62,9 +64,6 @@ namespace SillyInsultsMVCWeb.Controllers
             return PartialView(service.Get10RecentInsults());
             //need to have model contain list of insults, and viewbag have the random insults
         }
-
-
-
 
         public ActionResult About()
         {
