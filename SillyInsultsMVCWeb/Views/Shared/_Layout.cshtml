@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title Silly Insult Generator</title>
+    <title>Silly Insult Generator</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,7 +22,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    
+
                     <li>@Html.ActionLink("Create a new Adjective", "Create", "Adjective")</li>
                     <li>@Html.ActionLink("Create a new Noun", "Create", "Noun")</li>
                     <li>@Html.ActionLink("Create a new Title", "Create", "Title")</li>
@@ -30,7 +30,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
@@ -38,6 +38,8 @@
         @RenderBody()
         <hr />
         <footer>
+
+
             <p>&copy; @DateTime.Now.Year  Note: all characters, trademarks, copyrights are held by their respective owners. I don't own the images on this site, so please don't sue me.</p>
 
         </footer>
